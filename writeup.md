@@ -25,20 +25,31 @@ The goals / steps of this project are the following:
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
 
-## Rubric Points
-
-Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+### Rubric Points
+| Rubric Point            	| Work Done
+|:---------------------:|:---------------------------------------------:| 
+|Submission Files| I've checked that I've included all files. 
+|Data Set Summary| Data 
+|Exploratory Visualization| I've chosen 20 random images from the training set and displayed them along with their text label descriptions.
+|Preprocessing| I've resized the images.
+|Model Architecture| LeNet
+|Model Training| 10 Epochs.
+|Solution Approach| Added dropout.
+|Acquiring New Images| I used Google Maps street view to move around Berlin and take screenshots of traffic signs in Germany.
+|Performance on New Images| 
+|Model Certainty, Softmax Probabilities|
+|Augment Training Data|
+|Analyze New Image Performance| I measured precision and recall.
+|Visualize Softmax Probabilities|
+|Visualize Neural Network Layers|
 
 ---
-###Writeup
-
-1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
 ###Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set and identify where in your code the summary was done. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+####1. Summary.
 
-The code for this step is contained in the second code cell of the IPython notebook.  
+The code for this step is contained in the second code cell of the notebook.  
 
 I used the pandas library to calculate summary statistics of the traffic
 signs data set:

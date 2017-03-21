@@ -24,6 +24,10 @@ The goals / steps of this project are the following:
 [image6]: ./test/test03.png "Traffic Sign 3"
 [image7]: ./test/test04.png "Traffic Sign 4"
 [image8]: ./test/test05.png "Traffic Sign 5"
+[image9]: ./test/test06.png "Traffic Sign 6"
+[image10]: ./test/test07.png "Traffic Sign 7"
+[image11]: ./test/test08.png "Traffic Sign 8"
+[image12]: ./test/test09.png "Traffic Sign 9"
 
 
 ### Rubric Points
@@ -33,11 +37,11 @@ The goals / steps of this project are the following:
 |Data Set Summary| I've calculated totals of examples and labels. 
 |Exploratory Visualization| I've chosen random images from the training set and displayed them along with their text label descriptions, and plotted distribution of labels.
 |Preprocessing| I've normalised the images using OpenCV.
-|Model Architecture| My model is based on LeNet, and I've experimented with adding dropout to improve performance.
+|Model Architecture| My model is based on LeNet.
 |Model Training| I've trained it for 50 Epochs.
-|Solution Approach| I started with LeNet, and added dropout. Normalising the images helped greatly, especially with calculating top_5 softmax probablities for confidence evaluation later on.
+|Solution Approach| I adapted LeNet. Normalising the images helped greatly, especially with calculating top_5 softmax probablities for confidence evaluation later on.
 |Acquiring New Images| I used Google Maps street view to move around Berlin and take screenshots of traffic signs in Germany, and searched on Google Images.
-|Performance on New Images| The performance turned out to be 4 out of 5 correct, 80%. Pretty good, but would be best to get that last one correct as well.
+|Performance on New Images| Calculated.
 |Model Certainty, Softmax Probabilities| I've calculated softmax probabilities for predictions.
 
 ---
@@ -105,29 +109,27 @@ My final model consisted of the following layers:
 | Flatten					| Outputs 400								|
 | Layer 3: Fully connected		| Outputs 120								|
 | ReLU		| 								|
-| Dropout		| 					0.5 probability for training			|
 | Layer 4: Fully connected		| Outputs 84								|
 | ReLU		| 								|
-| Dropout		| 				0.5 probability for training				|
 | Layer 5: Fully connected		| Outputs 43 (n_classes)								|
  
 ####4. Training
 
-The code for training the model is located in the eighth cell of the notebook. 
+The code for training the model is located in the 8th cell of the notebook. 
 
 To train the model, I used the Adam optimizer. Batch size set to 128, and learning rate at 0.001.
 
 
 ####5. Solution
 
-The code for calculating the accuracy of the model is located in the tenth code cell of the notebook.
+The code for calculating the accuracy of the model is located in the 9th code cell of the notebook.
 
 My final model results were:
 
 * Validation set accuracy of 99% 
 * Test set accuracy of 92%
 
-The first architecture tried was based on LeNet with dropout added. 
+The first architecture tried was based on LeNet. 
 
 ###Test Model on New Images
 
@@ -139,13 +141,17 @@ Here are the German traffic signs that I found on the web:
 ![2][image5]
 ![3][image6]
 ![4][image7]
-![4][image8]
+![5][image8]
+![6][image9]
+![7][image10]
+![8][image11]
+![9][image12]
 
 All should be pretty easy to classify, as they are all clear, and are the type of signs that are present within the training set.
 
 ####2. Predictions
 
-The code for making predictions on my final model is located in the thirteenth code cell of the notebook.
+The code for making predictions on my final model is located in the 11th code cell of the notebook.
 
 Here are the results of the prediction (bold is incorrectly predicted):
 
@@ -156,19 +162,26 @@ Here are the results of the prediction (bold is incorrectly predicted):
 | Right-of-way			|       	 Right-of-way |
 | Keep Right 			|       	Keep Right |
 | Speed Limit 30km/h			|       Speed Limit 30km/h |
-
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. Not as good as the test set, but a small sample.
+| Right-of-way	   			   |       **Traffic signals** |
+| Priority road			|       Priority road |
+| Priority road			|       Priority road |
+| Ahead only           |       Ahead only          |
+The model was able to correctly guess 7 of the 9 traffic signs, which gives an accuracy of 78%. Not as good as the test set, but it is a small set.
 
 ####3. Model Confidence 
 
-The code for making confidence predictions on my final model is located in the forteenth code cell of the notebook.
+The code for making confidence predictions on my final model is located in the 13th code cell of the notebook.
 
 For the first image, the model is relatively sure that this is a 70km/h speed sign, and the image is indeed that. The top five softmax probabilities were:
 
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| 96.95%         		 | Speed Limit 70km/h     | |
-| 93.11%    			 	 | 		**Speed Limit 30km/h** |
-| 100.0%				    |      Right-of-way |
-| 99.84%					 | 	Keep Right	|
-| 100.0%	      			 | 	Speed Limit 30km/h|
+| Probability         	|     Prediction	        | Softmax | 
+|:---------------------:|:---------------------------------------------:|:----:|
+| 77%         		 | Speed Limit 70km/h     | [ 0.76599997  0.228       0.006       0.          0.        ]  |
+| 100%    			 	 | 		**Speed Limit 30km/h** | [ 1.  0.  0.  0.  0.] 
+| 100%				    |      Right-of-way | [ 1.  0.  0.  0.  0.] 
+| 100%					 | 	Keep Right	| [ 1.  0.  0.  0.  0.] 
+| 100%	      			 | 	Speed Limit 30km/h| [ 1.  0.  0.  0.  0.] 
+| 52%	   			   |       **Traffic signals** | [ 0.52899998  0.322       0.149       0.          0.        ] 
+| 100%			|       Priority road | [ 1.  0.  0.  0.  0.] 
+| 100%			|       Priority road | [ 1.  0.  0.  0.  0.] 
+| 100%           |       Ahead only          | [ 1.  0.  0.  0.  0.] 

@@ -129,7 +129,20 @@ My final model results were:
 * Validation set accuracy of 99% 
 * Test set accuracy of 92%
 
-The first architecture tried was based on LeNet. 
+
+The solution was first based on LeNet, adapted to fit the input size of the images.  I used a convolutional layer approach because the task is a classification of images task and convolutional layers are particulary adept at this, being able to find the same structure at different translations and skewings of input, and being indifferent to lightness and colouring changes.
+
+I used the pooling layers to reduce the 32x32 input resolution down at different layers to summarise the information in the images into actionable values.
+
+I tried adding a dropout of 0.5 for training to the solution, but found it did not improve the validation accuracy, so I removed it. The validation accuracy is already very high at 99%, so a better approach would be to get a larger data set size, or use more data in validation, as the test set accuacy is not as high at 92%, which indicates some level of overfitting to the train/validation dataset.
+
+I used ReLU activations because I needed a non-linear activation function between the fully connected layers. ReLU is differentiable and simple, and doesn't suffer as much as sigmoid in disappearing gradients.
+
+The solution works very well given it is only seeing 32x32 resolution images of street signs, where some of the signs are only just discernable at this reslution to humans, especially in bad lighting conditions.
+
+Adapting it from a similar problem, written number image classification, gave me a quick start on it, as it's a similar problem.
+
+I didn't greyscale the images in the preprocessing step, because unlike the handwritten digit problem, the colours are important in determining which sign it is. The reds, blues, and yellows are a big part of quickly identifying and classifying signs for humans, and so likely will be for the network as well.
 
 ###Test Model on New Images
 
